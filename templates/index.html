@@ -9,9 +9,12 @@
 <body>
 <div class="calculator">
    <h1>Flask Calculator</h1>
+   
+   <!-- Envoie l'expression au serveur Flask pour son évaluation. -->
    <form method="POST">
       <input type="text" name="display" id="display" value="{{ result }}" readonly>
 
+      <!-- Regroupe les touches permettant de construire et soumettre une expression. -->
       <div class="buttons">
          <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
          <button type="button" class="btn" onclick="appendToDisplay('2')">02</button>
@@ -30,18 +33,30 @@
 
          <button type="button" class="btn" onclick="appendToDisplay('0')">0</button>
          <button type="button" class="btn" onclick="clearDisplay()">C</button>
+
+         <!-- Soumet le formulaire plutôt que de modifier l'affichage. -->
          <button type="submit" class="btn operator">=</button>
          <button type="button" class="btn operator" onclick="appendToDisplay('/')"></button>
       </div>
    </form>
 </div>
 
+
 <script>
+   /**
+   * Ajoute un chiffre ou un opérateur à l'affichage de la calculatrice.
+   * @param {string} value - Caractère à ajouter à l'affichage.
+   * @returns {void} Ne retourne aucune valeur.
+   */
    function appendToDisplay(value) {
       const display = document.getElementById('display');
       display.value += value;
    }
 
+   /**
+   * Efface le contenu de l'affichage de la calculatrice.
+   * @returns {void} Ne retourne aucune valeur.
+   */
    function clearDisplay() {
       document.getElementById('display').value = '';
    }
