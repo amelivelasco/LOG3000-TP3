@@ -1,3 +1,11 @@
+/*
+ * Feuille de style de la calculatrice (templates/index.html).
+ * Mise en page : un bloc .calculator centré dans la fenêtre, qui contient
+ * l'écran #display puis une grille de boutons .btn.
+ */
+
+/* Flex sur toute la hauteur de la fenêtre pour centrer la calculatrice
+   horizontalement et verticalement. */
 body {
    font-family: Arial, sans-serif;
    background-color: #f0f0f0;
@@ -9,6 +17,8 @@ body {
 }
 
 .calculator {
+   /* Prend toute la largeur sur petit écran, mais reste limitée à 600px
+      sur grand écran pour que les boutons ne soient pas trop larges. */
    width: 100%;
    max-width: 600px;
    background-color: #333;
@@ -24,10 +34,13 @@ h1 {
    font-size: 36px;
 }
 
+/* Écran de la calculatrice : champ en lecture seule rempli par les boutons
+   (JavaScript) puis par le résultat renvoyé par le serveur. */
 #display {
    width: 100%;
    height: 80px;
    font-size: 36px;
+   /* Aligné à droite comme sur une calculatrice physique. */
    text-align: right;
    padding: 15px;
    margin-bottom: 20px;
@@ -39,6 +52,8 @@ h1 {
 
 .buttons {
    display: grid;
+   /* 4 colonnes : chaque ligne de index.html contient 4 boutons
+      (3 chiffres ou commandes + 1 opérateur). */
    grid-template-columns: repeat(4, 1fr);
    gap: 15px;
 }
@@ -52,6 +67,8 @@ h1 {
    background-color: #666;
    color: #fff;
    cursor: pointer;
+   /* Changement de couleur progressif pour que le survol et le clic
+      soient perceptibles sans être brusques. */
    transition: background-color 0.2s;
 }
 
@@ -59,6 +76,9 @@ h1 {
    background-color: #555;
 }
 
+/* Les opérateurs et « = » sont en orange pour les distinguer des chiffres.
+   Ces règles ont la même spécificité que celles de .btn : elles doivent
+   rester après elles dans le fichier pour l'emporter. */
 .operator {
    background-color: #ff9500;
 }
@@ -67,6 +87,7 @@ h1 {
    background-color: #e68a00;
 }
 
+/* Teinte plus sombre au clic pour confirmer visuellement l'appui. */
 .btn:active {
    background-color: #444;
 }
