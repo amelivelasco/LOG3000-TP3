@@ -95,3 +95,7 @@ h1 {
 .operator:active {
    background-color: #cc7a00;
 }
+
+.equals {
+   grid-column: 1 / -1;
+}
