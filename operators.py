@@ -39,10 +39,9 @@ def multiply(a,b):
         b (float): Second facteur.
 
     Returns:
-        float: Le produit ``a * b`` attendu. Actuellement, la fonction
-        calcule ``a ** b`` (puissance, voir issue #8).
+        float: Le produit ``a * b``.
     """
-    return a ** b
+    return a * b
 
 def divide(a,b):
     """Divise le premier nombre par le second.
