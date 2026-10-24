@@ -27,7 +27,8 @@ def subtract(a,b):
         b (float): Opérande de droite (diminuteur).
 
     Returns:
-        float: La différence ``a - b``.
+        float: La différence ``a - b`` attendue. Actuellement, la fonction
+        renvoie ``b - a`` (ordre inversé, voir issue #7).
     """
     return b - a
 
@@ -39,7 +40,8 @@ def multiply(a,b):
         b (float): Second facteur.
 
     Returns:
-        float: Le produit ``a * b``.
+        float: Le produit ``a * b`` attendu. Actuellement, la fonction
+        calcule ``a ** b`` (puissance, voir issue #8).
     """
     return a ** b
 
@@ -53,10 +55,12 @@ def divide(a,b):
         b (float): Diviseur (opérande de droite).
 
     Returns:
-        float: Le quotient ``a / b``.
+        float: Le quotient ``a / b`` attendu. Actuellement, la fonction
+        fait une division entière ``a // b`` (voir issue #9).
 
     Raises:
-        ZeroDivisionError: Si ``b`` vaut 0.
+        ZeroDivisionError: Si ``b`` vaut 0. Le message actuel n'est pas
+        compréhensible pour l'utilisateur (voir issue #10).
     """
     return a // b
 
