@@ -15,13 +15,22 @@ OPS = {
 def calculate(expr: str):
     """Évalue une expression arithmétique.
 
+    Les opérandes peuvent être négatifs : un « - » en début d'expression ou
+    juste après un opérateur est lu comme un signe (ex. ``-3+2``, ``3*-2``).
+
     Args:
         expr (str): Expression contenant deux nombres et un opérateur.
 
     Returns:
         float: Résultat du calcul.
+
+    Raises:
+        ValueError: Si l'expression est vide, contient plusieurs opérateurs,
+            n'a pas le format « nombre opérateur nombre » ou si un opérande
+            n'est pas un nombre.
+        ZeroDivisionError: Si l'expression divise par zéro.
     """
-    
+
     if not expr or not isinstance(expr, str):
         raise ValueError("empty expression")
 
@@ -31,6 +40,10 @@ def calculate(expr: str):
     op_char = None
 
     for i, ch in enumerate(s):
+        # Un "-" en tête ou juste après un opérateur est le signe d'un nombre
+        # négatif, pas une soustraction : il reste dans l'opérande.
+        if ch == '-' and (i == 0 or s[i - 1] in OPS):
+            continue
         if ch in OPS:
             if op_pos != -1:
                 raise ValueError("only one operator is allowed")
