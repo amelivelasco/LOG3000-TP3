@@ -47,20 +47,16 @@ def multiply(a,b):
 
 def divide(a,b):
     """Divise le premier nombre par le second.
-
-    La division est réelle : ``7 / 2`` doit donner ``3.5``, pas ``3``.
-
+    
     Args:
         a (float): Dividende (opérande de gauche).
         b (float): Diviseur (opérande de droite).
 
     Returns:
-        float: Le quotient ``a / b`` attendu. Actuellement, la fonction
-        fait une division entière ``a // b`` (voir issue #9).
+        float: Le quotient ``a / b`` attendu.
 
     Raises:
-        ZeroDivisionError: Si ``b`` vaut 0. Le message actuel n'est pas
-        compréhensible pour l'utilisateur (voir issue #10).
+        ZeroDivisionError: Si ``b`` vaut 0.
     """
-    return a // b
+    return a / b
 
