@@ -68,6 +68,9 @@ def index():
         expression = request.form.get('display', '')
         try:
             result = calculate(expression)
+        except ZeroDivisionError:
+            # Pour éviter d'afficher le message technique de Python à l'utilisateur.
+            result = "Error: Division by zero"
         except Exception as e:
             result = f"Error: {e}"
     return render_template('index.html', result=result)
