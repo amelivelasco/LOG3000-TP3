@@ -27,10 +27,9 @@ def subtract(a,b):
         b (float): Opérande de droite (diminuteur).
 
     Returns:
-        float: La différence ``a - b`` attendue. Actuellement, la fonction
-        renvoie ``b - a`` (ordre inversé, voir issue #7).
+        float: La différence ``a - b``.
     """
-    return b - a
+    return a - b
 
 def multiply(a,b):
     """Multiplie deux nombres.
