@@ -19,11 +19,13 @@ class TestStyle(unittest.TestCase):
 
     def test_display_box_sizing(self):
         """Vérifie que la largeur de l'affichage inclut son padding."""
+        # Les commentaires CSS sont retirés : sinon ils restent collés au
+        # sélecteur suivant et "#display" n'est pas reconnu.
+        css = re.sub(r"/\*.*?\*/", "", self.css, flags=re.S)
         # Un style global ou spécifique peut définir cette propriété.
-        rules = re.findall(r"([^{}]+)\{([^{}]*)\}", self.css)
+        rules = re.findall(r"([^{}]+)\{([^{}]*)\}", css)
         valid = any(
-            ("#display" in selectors.split(",") or
-             "*" in selectors.split(","))
+            ("#display" in selectors or "*" in selectors)
             and re.search(
                 r"box-sizing\s*:\s*border-box\s*;",
                 declarations
